@@ -79,12 +79,12 @@ If you want to build your base docker image, then use:
     # CPU
     docker build -t sklearn-base:<Scikit-learn_version>-cpu-py<python_version> -f docker/<Scikit-learn_version>/base/Dockerfile.cpu --build-arg py_version=<python_version> .
 
-::
+.. parsed-literal::
 
     # Example
 
     # CPU
-    docker build -t sklearn-base:0.20.0-cpu-py3 -f docker/0.20.0/base/Dockerfile.cpu --build-arg py_version=3 .
+    docker build -t sklearn-base:|SKLearnLatestVersion|-cpu-py3 -f docker/|SKLearnLatestVersion|/base/Dockerfile.cpu --build-arg py_version=3 .
 
 
 Final Images
@@ -116,12 +116,12 @@ If you want to build "final" Docker images, then use:
     # CPU
     docker build -t <image_name>:<tag> -f docker/<Scikit-learn_version>/final/Dockerfile.cpu --build-arg py_version=<python_version> .
 
-::
+.. parsed-literal::
 
     # Example
 
     # CPU
-    docker build -t preprod-sklearn:0.20.0-cpu-py3 -f docker/0.20.0/final/Dockerfile.cpu --build-arg py_version=3 .
+    docker build -t preprod-sklearn:|SKLearnLatestVersion|-cpu-py3 -f docker/|SKLearnLatestVersion|/final/Dockerfile.cpu --build-arg py_version=3 .
 
 
 Running the tests
@@ -181,13 +181,13 @@ If you want to run local integration tests, then use:
                       --py-version <2_or_3> \
                       --framework-version <Scikit-learn_version>
 
-::
+.. parsed-literal::
 
     # Example
-    pytest test/integration/local --docker-base-name preprod-sklearn \
-                      --tag 1.0 \
-                      --py-version 3 \
-                      --framework-version 0.20.0
+    pytest test/integration/local --docker-base-name preprod-sklearn ``\``
+                      --tag 1.0 ``\``
+                      --py-version 3 ``\``
+                      --framework-version |SKLearnLatestVersion|
 
 SageMaker Integration Tests
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -241,3 +241,5 @@ License
 SageMaker Scikit-learn Container is licensed under the Apache 2.0 License. It is copyright 2018 Amazon
 .com, Inc. or its affiliates. All Rights Reserved. The license is available at:
 http://aws.amazon.com/apache2.0/
+
+.. |SKLearnLatestVersion| replace:: 0.23-1
